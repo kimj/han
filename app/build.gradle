@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.mentalmachines.han"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    final support = "27.0.2"
+    final playServices = "10.0.1"
+    final leakCanary = "1.5"
+    final butterKnife = "8.8.1"
+
+    final retrofit2 = "2.3.0"
+    final okHttp = "3.8.1"
+    final rxAndroid = "2.0.1"
+    final rxJava2 = "2.1.3"
+    final rxBinding = "2.0.0"
+    final rxLifecycle = "2.1.0"
+
+    final rxGcm = "0.1.4-SNAPSHOT"
+    final dagger2 = "2.16"
+    final espresso = "2.2.2"
+    final testRunner = "0.5"
+    final mockito = "1.10.19"
+    final junit = "4.12"
+    final timber = "4.3.1"
+    final moshi = "1.2.0"
+    final glide = "3.7.0"
+    final rxLocation = "1.0.3"
+    final multidex = "1.0.1"
+
+    final lifecycle = '1.1.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.google.dagger:dagger:2.16'
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+
+    implementation "com.android.support:multidex:$multidex"
+
+    // TESTING
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.mockito:mockito-core:$mockito"
+
+    //REPORTING
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanary"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanary"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanary"
+
+    // Support Libraries
+    implementation "com.android.support:design:$support"
+    implementation "com.android.support:appcompat-v7:$support"
+    implementation "com.android.support:cardview-v7:$support"
+    implementation "com.android.support:gridlayout-v7:$support"
+    implementation "com.android.support:leanback-v17:$support"
+    implementation "com.android.support:mediarouter-v7:$support"
+    implementation "com.android.support:palette-v7:$support"
+    implementation "com.android.support:recyclerview-v7:$support"
+    implementation "com.android.support:support-annotations:$support"
+    implementation "com.android.support:support-v13:$support"
+    implementation "com.android.support:support-v4:$support"
+    implementation "com.android.support:support-vector-drawable:$support"
+    implementation "com.android.support:animated-vector-drawable:$support"
+
+    // NETWORKING
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2"
+    implementation "com.squareup.okhttp3:okhttp:$okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
+
+    //JSON PARSING
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation group: 'com.squareup.retrofit2', name: 'converter-moshi', version: '2.0.0-beta3'
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava2"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxBinding"
+    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxBinding"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rxBinding"
+    implementation "com.jakewharton.rxbinding2:rxbinding-design:$rxBinding"
+    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rxBinding"
+    implementation "com.jakewharton.rxbinding2:rxbinding-leanback-v17:$rxBinding"
+    implementation "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycle"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycle"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycle"
+
+    implementation "android.arch.lifecycle:extensions:$lifecycle"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle"
+
+    // DEPENDENCY INJECTION
+    implementation "com.google.dagger:dagger:$dagger2"
+    implementation "com.google.dagger:dagger-android:$dagger2"
+    implementation "com.google.dagger:dagger-android-support:$dagger2" // if you use the support libraries
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2"
+
+    // VIEW PROCESSING
+    implementation "com.jakewharton:butterknife:$butterKnife"
+    kapt "com.jakewharton:butterknife-compiler:$butterKnife"
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+    // MISC
+    implementation "com.jakewharton.timber:timber:$timber"
+    implementation "com.facebook.stetho:stetho-okhttp3:1.4.2"
+    implementation "com.squareup.leakcanary:leakcanary-watcher:$leakCanary"
+
+    // DATABASE
+
+
+    implementation "com.patloew.rxlocation:rxlocation:$rxLocation"
+    // implementation "com.google.android.gms:play-services:$playServices"
+    /*implementation "com.google.android.gms:play-services-location:$playServices"
+    implementation "com.google.android.gms:play-services-places:$playServices"*/
+
+    // KOTLIN
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    kapt "com.google.dagger:dagger-android-processor:$dagger2"}

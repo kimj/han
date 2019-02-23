@@ -1,0 +1,7 @@
+package com.mentalmachines.han.ui.base
+
+import android.app.Application
+
+class HanApplication : Application() {
+
+}
