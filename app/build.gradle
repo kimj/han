@@ -24,7 +24,7 @@ android {
 
 dependencies {
 
-    final support = "27.0.2"
+    final support = "28.0.0"
     final playServices = "10.0.1"
     final leakCanary = "1.5"
     final butterKnife = "8.8.1"
