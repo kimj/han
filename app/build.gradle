@@ -27,7 +27,7 @@ dependencies {
     final support = "27.0.2"
     final playServices = "10.0.1"
     final leakCanary = "1.5"
-    final butterKnife = "8.8.1"
+    final butterKnife = "10.2.3"
 
     final retrofit2 = "2.3.0"
     final okHttp = "3.8.1"
