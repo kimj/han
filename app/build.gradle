@@ -37,7 +37,7 @@ dependencies {
     final rxLifecycle = "2.1.0"
 
     final rxGcm = "0.1.4-SNAPSHOT"
-    final dagger2 = "2.16"
+    final dagger2 = "2.29.1"
     final espresso = "2.2.2"
     final testRunner = "0.5"
     final mockito = "1.10.19"
@@ -52,8 +52,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.google.dagger:dagger:2.16'
-    kapt 'com.google.dagger:dagger-compiler:2.16'
+    implementation 'com.google.dagger:dagger:2.29.1'
+    kapt 'com.google.dagger:dagger-compiler:2.29.1'
 
     implementation "com.android.support:multidex:$multidex"
 
