@@ -41,7 +41,7 @@ dependencies {
     final espresso = "2.2.2"
     final testRunner = "0.5"
     final mockito = "1.10.19"
-    final junit = "4.12"
+    final junit = "4.13.2"
     final timber = "4.3.1"
     final moshi = "1.2.0"
     final glide = "3.7.0"
