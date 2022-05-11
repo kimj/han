@@ -1,35 +1,12 @@
-package com.mentalmachines.han.data.repository.base;
+package com.mentalmachines.han.data.repository.base
 
-import java.util.List;
-
-public class RepositoryImpl implements Repository{
-    @Override
-    public void add(Object item) {
-
-    }
-
-    @Override
-    public void add(Iterable items) {
-
-    }
-
-    @Override
-    public void update(Object item) {
-
-    }
-
-    @Override
-    public void remove(Object item) {
-
-    }
-
-    @Override
-    public void remove(int id) {
-
-    }
-
-    @Override
-    public List query(int id) {
-        return null;
+class RepositoryImpl : Repository<Any?> {
+    override fun add(item: Any?) {}
+    override fun add(items: Iterable<*>?) {}
+    override fun update(item: Any?) {}
+    override fun remove(item: Any?) {}
+    override fun remove(id: Int) {}
+    override fun query(id: Int): List<*>? {
+        return null
     }
 }

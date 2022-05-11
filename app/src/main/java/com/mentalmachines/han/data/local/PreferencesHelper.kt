@@ -1,18 +1,19 @@
-package com.mentalmachines.han.data.local;
+package com.mentalmachines.han.data.local
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Context
+import android.content.SharedPreferences
 
-
-public class PreferencesHelper {
-    public static final String PREF_FILE_NAME = "mvpstarter_pref_file";
-    private final SharedPreferences sharedPreferences;
-
-    public PreferencesHelper(Context context) {
-        sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+class PreferencesHelper(context: Context) {
+    private val sharedPreferences: SharedPreferences
+    fun clear() {
+        sharedPreferences.edit().clear().apply()
     }
 
-    public void clear() {
-        sharedPreferences.edit().clear().apply();
+    companion object {
+        const val PREF_FILE_NAME = "mvpstarter_pref_file"
+    }
+
+    init {
+        sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
     }
 }

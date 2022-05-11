@@ -1,36 +1,36 @@
-package com.mentalmachines.cjkdroid.fragments;
+package com.mentalmachines.cjkdroid.fragments
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.support.v4.app.Fragment
+import android.view.View
 
 /**
  * A dummy fragment representing a section of the app, but that simply
  * displays dummy text.
  */
-public class CJKEnglishFragment extends Fragment {
-	/**
-	 * The fragment argument representing the section number for this
-	 * fragment.
-	 */
-	public static final String ARG_SECTION_NUMBER = "section_number";
+class CJKEnglishFragment : Fragment() {
+    fun onCreateView(
+        inflater: LayoutInflater?, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Create a new TextView and set its text to the fragment's section
+        // number argument value.
+        val textView = TextView(getActivity())
+        textView.setGravity(Gravity.CENTER)
+        textView.setText(
+            Integer.toString(
+                getArguments().getInt(
+                    ARG_SECTION_NUMBER
+                )
+            )
+        )
+        return textView
+    }
 
-	public CJKEnglishFragment() {
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// Create a new TextView and set its text to the fragment's section
-		// number argument value.
-		TextView textView = new TextView(getActivity());
-		textView.setGravity(Gravity.CENTER);
-		textView.setText(Integer.toString(getArguments().getInt(
-				ARG_SECTION_NUMBER)));
-		return textView;
-	}
+    companion object {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        const val ARG_SECTION_NUMBER = "section_number"
+    }
 }

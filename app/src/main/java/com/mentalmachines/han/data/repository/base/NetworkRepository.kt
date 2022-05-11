@@ -1,4 +1,3 @@
-package com.mentalmachines.han.data.repository.base;
+package com.mentalmachines.han.data.repository.base
 
-public class NetworkRepository {
-}
+open class NetworkRepository
