@@ -1,9 +1,14 @@
-package com.mentalmachines.cjkdroid
+package com.mentalmachines.han.ui.main
 
 import android.net.ParseException
-import android.support.v4.app.Fragment
+import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.mentalmachines.han.R
+import com.mentalmachines.han.SimpleWikiHelper
 
 class HaDoKenFragment : Fragment() {
     /** Called when the activity is first created.  */
@@ -38,14 +43,14 @@ class HaDoKenFragment : Fragment() {
             }
             try {
                 SimpleWikiHelper.prepareUserAgent(getApplicationContext())
-                pageContent = SimpleWikiHelper.getPageContent("" + searchText.getText(), false)
+                pageContent = SimpleWikiHelper.getPageContent("" + searchText.text, false)
                 Log.w("HadoKen", pageContent)
             } catch (e: ApiException) {
                 Log.e("WordWidget", "Couldn't contact API", e)
             } catch (e: ParseException) {
                 Log.e("WordWidget", "Couldn't parse API response", e)
             }
-            resultsText.setText(pageContent)
+            resultsText.text = pageContent
         }
     }
 }

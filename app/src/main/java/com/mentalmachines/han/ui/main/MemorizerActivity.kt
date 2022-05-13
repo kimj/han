@@ -1,13 +1,12 @@
-package com.mentalmachines.cjkdroid
+package com.mentalmachines.han
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import com.mentalmachines.han.R
 
-class Memorizer : Activity() {
+class MemorizerActivity : Activity() {
     /** Called when the activity is first created.  */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

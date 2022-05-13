@@ -1,28 +1,33 @@
-package com.mentalmachines.cjkdroid.fragments
+package com.mentalmachines.han.ui.main
 
-import android.support.v4.app.Fragment
+import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 
 /**
  * A dummy fragment representing a section of the app, but that simply
  * displays dummy text.
  */
 class CJKEnglishFragment : Fragment() {
-    fun onCreateView(
-        inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Create a new TextView and set its text to the fragment's section
         // number argument value.
-        val textView = TextView(getActivity())
-        textView.setGravity(Gravity.CENTER)
-        textView.setText(
+        val textView = TextView(activity)
+        textView.gravity = Gravity.CENTER
+        textView.text = arguments?.let {
             Integer.toString(
-                getArguments().getInt(
+                it.getInt(
                     ARG_SECTION_NUMBER
                 )
             )
-        )
+        }
         return textView
     }
 
