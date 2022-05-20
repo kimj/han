@@ -35,7 +35,6 @@ dependencies {
     final rxBinding = "2.0.0"
     final rxLifecycle = "2.1.0"
 
-    final rxGcm = "0.1.4-SNAPSHOT"
     final dagger2 = "2.35.1"
     final espresso = "2.2.2"
     final testRunner = "0.5"
@@ -44,10 +43,27 @@ dependencies {
     final timber = "4.3.1"
     final moshi = "1.2.0"
     final glide = "3.7.0"
-    final rxLocation = "1.0.3"
     final multidex = "1.0.1"
 
     final lifecycle = '1.1.0'
+
+    final room_version = "2.4.2"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // optional - Paging 3 Integration
+    implementation "androidx.room:room-paging:2.5.0-alpha01"
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
