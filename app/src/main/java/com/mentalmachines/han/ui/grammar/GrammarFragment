@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mentalmachines.han.ui.base.BaseFragment
+import androidx.fragment.app.Fragment
 
-class GrammarFragment : BaseFragment(){
+
+class GrammarFragment : Fragment() {
     var viewModel: GrammarViewModel()
-    override val layout: Int
+
+    val layout: Int
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         viewModel = ViewModelProviders.of(this).get(GrammarViewModel::class.java)
 
     }

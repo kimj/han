@@ -12,9 +12,10 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.mentalmachines.han.R
-import com.mentalmachines.han.fragments.FlashCardFragment
 import com.mentalmachines.han.fragments.ThousandCharacterClassicFragment
 import com.mentalmachines.han.ui.base.BaseActivity
+import com.mentalmachines.han.ui.conjugator.VerbConjugationFragment
+import com.mentalmachines.han.ui.flash_cards.FlashCardFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
@@ -152,9 +153,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fun getPageTitle(position: Int): CharSequence? {
             val l = Locale.getDefault()
             when (position) {
-                0 -> return getString(R.string.title_section1).toUpperCase(l)
-                1 -> return getString(R.string.title_section2).toUpperCase(l)
-                2 -> return getString(R.string.title_section3).toUpperCase(l)
+                0 -> return getString(R.string.title_section1).uppercase(l)
+                1 -> return getString(R.string.title_section2).uppercase(l)
+                2 -> return getString(R.string.title_section3).uppercase(l)
             }
             return null
         }

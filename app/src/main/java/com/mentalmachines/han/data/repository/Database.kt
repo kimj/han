@@ -4,23 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
+import com.mentalmachines.han.data.model.Grammar
 
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
+@Database(entities = [Hanja::class, Grammar::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun gardenPlantingDao(): GardenPlantingDao
-    abstract fun plantDao(): PlantDao
+    val DATABASE_NAME = "sunflower-db"
+    val PLANT_DATA_FILENAME = "plants.json"
+
+    abstract fun hanjaDao(): HanjaDao
 
     companion object {
-
         // For Singleton instantiation
         @Volatile
         private var instance: AppDatabase? = null

@@ -7,12 +7,12 @@ class Deck {
     // ---------------------------------------------------
     // flashcards is an array of flashcard(int, string[])
     // ---------------------------------------------------
-    var flashcards: ArrayList<*> = ArrayList<Any?>()
+    var flashcards: ArrayList<Flashcard?> = ArrayList<Flashcard?>()
     var flashcard_count = 0
 
     // constructors
     constructor()
-    constructor(flashcards: ArrayList<*>) {
+    constructor(flashcards: ArrayList<Flashcard?>) {
         deck_id = 0
         this.flashcards = flashcards
         flashcard_count = flashcards.size
@@ -31,7 +31,7 @@ class Deck {
         return flashcard_count
     }
 
-    private fun set_flashcards(cards: ArrayList<*>) {
+    private fun set_flashcards(cards: ArrayList<Flashcard?>) {
         flashcards = cards
     }
 

@@ -18,8 +18,5 @@ class HanjaRepository @Inject constructor(
         HanjaDao.deleteHanja(Hanja)
     }
 
-    fun isPlanted(plantId: String) =
-        HanjaDao.isPlanted(plantId)
-
     fun getHanja() = HanjaDao.getHanja()
 }

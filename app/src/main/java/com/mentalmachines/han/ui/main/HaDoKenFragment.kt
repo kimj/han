@@ -12,7 +12,7 @@ import com.mentalmachines.han.SimpleWikiHelper
 
 class HaDoKenFragment : Fragment() {
     /** Called when the activity is first created.  */
-    fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_ha_do_ken)
 
