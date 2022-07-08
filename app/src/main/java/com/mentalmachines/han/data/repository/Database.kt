@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.mentalmachines.han.data.model.Grammar
 
 /**
@@ -12,9 +15,6 @@ import com.mentalmachines.han.data.model.Grammar
  */
 @Database(entities = [Hanja::class, Grammar::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    val DATABASE_NAME = "sunflower-db"
-    val PLANT_DATA_FILENAME = "plants.json"
-
     abstract fun hanjaDao(): HanjaDao
 
     companion object {
@@ -31,6 +31,9 @@ abstract class AppDatabase : RoomDatabase() {
         // Create and pre-populate the database. See this article for more details:
         // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): AppDatabase {
+            val DATABASE_NAME = "sunflower-db"
+            val KEY_FILENAME = "plants.json"
+
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addCallback(
                     object : RoomDatabase.Callback() {

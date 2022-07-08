@@ -3,22 +3,27 @@ package com.mentalmachines.han.ui.main
 import android.net.ParseException
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.android.gms.common.api.ApiException
 import com.mentalmachines.han.R
 import com.mentalmachines.han.SimpleWikiHelper
 
 class HaDoKenFragment : Fragment() {
-    /** Called when the activity is first created.  */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_ha_do_ken)
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // String sResult = new String();
         val searchButton = findViewById(R.id.search) as Button
-        searchButton.setOnClickListener { // TODO Auto-generated method stub
+        searchButton.setOnClickListener {
             // grab @+id/searchString and send this to the xml request handler
             val searchText: EditText = findViewById(R.id.searchText) as EditText
             val resultsText: TextView = findViewById(R.id.resultsText) as TextView
@@ -52,5 +57,10 @@ class HaDoKenFragment : Fragment() {
             }
             resultsText.text = pageContent
         }
+
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
+
+    @Composable
+    private fun
 }
