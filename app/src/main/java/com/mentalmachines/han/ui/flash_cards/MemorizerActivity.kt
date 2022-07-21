@@ -1,10 +1,11 @@
-package com.mentalmachines.han
+package com.mentalmachines.han.ui.flash_cards
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import com.mentalmachines.han.R
 
 class MemorizerActivity : Activity() {
     /** Called when the activity is first created.  */

@@ -1,17 +1,46 @@
-package com.mentalmachines.han.ui.main
+package com.mentalmachines.han.ui
 
 import android.view.WindowInsets
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.primarySurface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowInsetsCompat.Type.navigationBars
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.mentalmachines.han.ui.theme.BlueTheme
 
 class HanApp {
+    enum class CourseTabs(
+        @StringRes val title: Int,
+        @DrawableRes val icon: Int,
+        val route: String
+    ) {
+        MY_COURSES(R.string.my_courses, R.drawable.ic_grain, CoursesDestinations.MY_COURSES_ROUTE),
+        FEATURED(R.string.featured, R.drawable.ic_featured, CoursesDestinations.FEATURED_ROUTE),
+        SEARCH(R.string.search, R.drawable.ic_search, CoursesDestinations.SEARCH_COURSES_ROUTE)
+    }
+
+    /**
+     * Destinations used in the ([HanApp]).
+     */
+    private object CoursesDestinations {
+        const val FEATURED_ROUTE = "courses/featured"
+        const val MY_COURSES_ROUTE = "courses/my"
+        const val SEARCH_COURSES_ROUTE = "courses/search"
+    }
+
+
     @Composable
     fun HanApp(finishActivity: () -> Unit) {
         BlueTheme {
@@ -32,7 +61,6 @@ class HanApp {
 
     @Composable
     fun HanBottomBar(navController: NavController, tabs: Array<CourseTabs>) {
-
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
             ?: CourseTabs.FEATURED.route
@@ -70,4 +98,5 @@ class HanApp {
         }
     }
 
+    ToolTabs
 }

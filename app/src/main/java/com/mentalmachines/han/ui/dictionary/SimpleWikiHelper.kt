@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mentalmachines.han
+package com.mentalmachines.han.ui.dictionary
 
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
+import com.mentalmachines.han.R
 import org.apache.http.HttpEntity
 import org.json.JSONArray
 import org.json.JSONException

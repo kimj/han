@@ -1,4 +1,4 @@
-package com.mentalmachines.han.ui.main
+package com.mentalmachines.han.ui.dictionary
 
 import android.net.ParseException
 import android.os.Bundle
@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.gms.common.api.ApiException
 import com.mentalmachines.han.R
-import com.mentalmachines.han.SimpleWikiHelper
 
 class HaDoKenFragment : Fragment() {
 
