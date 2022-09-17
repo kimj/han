@@ -1,7 +1,6 @@
 package com.mentalmachines.han.data.repository
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +19,4 @@ interface HanjaDao {
     @Insert
     suspend fun insertHanja(hanja: Hanja): Long
 
-    @Delete
-    suspend fun deleteHanja(hanja: Hanja)
 }
