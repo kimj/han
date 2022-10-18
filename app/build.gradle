@@ -54,7 +54,7 @@ dependencies {
     final compose = '1.2.1'
     final lifecycle = '1.1.0'
     final room_version = '2.5.0-alpha02'
-    def nav_version = '2.5.1'
+    def nav_version = '2.5.2'
 
     // KOTLIN
     // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -75,6 +75,7 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata:$compose"
     implementation "androidx.compose.runtime:runtime-rxjava2:$compose"
     implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation "com.google.accompanist:accompanist-navigation-animation:0.26.2-beta"
 
     // optional - RxJava3 support for Room
     implementation "androidx.room:room-rxjava3:$room_version"

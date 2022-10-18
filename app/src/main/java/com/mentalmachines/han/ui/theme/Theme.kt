@@ -1,42 +1,15 @@
 package com.mentalmachines.han.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.mentalmachines.han.R
-import com.mentalmachines.han.ui.theme.OwlTheme.typography
-
-private val YellowThemeLight = lightColors(
-    primary = yellow500,
-    primaryVariant = yellow400,
-    onPrimary = Color.Black,
-    secondary = blue700,
-    secondaryVariant = blue800,
-    onSecondary = Color.White
-)
-
-private val YellowThemeDark = darkColors(
-    primary = yellow200,
-    secondary = blue200,
-    onSecondary = Color.Black,
-    surface = yellowDarkPrimary
-)
-
-@Composable
-fun YellowTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val colors = if (darkTheme) {
-        YellowThemeDark
-    } else {
-        YellowThemeLight
-    }
-    OwlTheme(darkTheme, colors, content)
-}
 
 private val BlueThemeLight = lightColors(
     primary = blue700,
@@ -51,62 +24,23 @@ private val BlueThemeDark = darkColors(
     surface = blueDarkPrimary
 )
 
-@Composable
-fun BlueTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val colors = if (darkTheme) {
-        BlueThemeDark
-    } else {
-        BlueThemeLight
-    }
-    OwlTheme(darkTheme, colors, content)
-}
-
-private val PinkThemeLight = lightColors(
-    primary = pink500,
-    secondary = pink500,
-    primaryVariant = pink600,
-    onPrimary = Color.Black,
-    onSecondary = Color.Black
-)
-
-private val PinkThemeDark = darkColors(
-    primary = pink200,
-    secondary = pink200,
-    surface = pinkDarkPrimary
-)
-
-@Composable
-fun PinkTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val colors = if (darkTheme) {
-        PinkThemeDark
-    } else {
-        PinkThemeLight
-    }
-    OwlTheme(darkTheme, colors, content)
-}
-
 private val LightElevation = Elevations()
 
 private val DarkElevation = Elevations(card = 1.dp)
 
-private val LightImages = Images(lockupLogo = R.drawable.ic_lockup_blue)
-
-private val DarkImages = Images(lockupLogo = R.drawable.ic_lockup_white)
-
 @Composable
-private fun OwlTheme(
-    darkTheme: Boolean,
-    colors: Colors,
+fun HanTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val elevation = if (darkTheme) DarkElevation else LightElevation
-    val images = if (darkTheme) DarkImages else LightImages
+    val images = Images(R.drawable.ic_menu_slideshow)
+    val colors = if (darkTheme) {
+        BlueThemeLight
+    } else {
+        BlueThemeLight
+    }
+
     CompositionLocalProvider(
         LocalElevations provides elevation,
         LocalImages provides images
@@ -118,46 +52,4 @@ private fun OwlTheme(
             content = content
         )
     }
-}
-
-/**
- * Alternate to [MaterialTheme] allowing us to add our own theme systems (e.g. [Elevations]) or to
- * extend [MaterialTheme]'s types e.g. return our own [Colors] extension
- */
-object OwlTheme {
-
-    /**
-     * Proxy to [MaterialTheme]
-     */
-    val colors: Colors
-        @Composable
-        get() = MaterialTheme.colors
-
-    /**
-     * Proxy to [MaterialTheme]
-     */
-    val typography: Typography
-        @Composable
-        get() = MaterialTheme.typography
-
-    /**
-     * Proxy to [MaterialTheme]
-     */
-    val shapes: Shapes
-        @Composable
-        get() = MaterialTheme.shapes
-
-    /**
-     * Retrieves the current [Elevations] at the call site's position in the hierarchy.
-     */
-    val elevations: Elevations
-        @Composable
-        get() = LocalElevations.current
-
-    /**
-     * Retrieves the current [Images] at the call site's position in the hierarchy.
-     */
-    val images: Images
-        @Composable
-        get() = LocalImages.current
 }

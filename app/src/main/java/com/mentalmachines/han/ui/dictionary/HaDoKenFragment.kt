@@ -60,6 +60,4 @@ class HaDoKenFragment : Fragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    @Composable
-    private fun
 }
