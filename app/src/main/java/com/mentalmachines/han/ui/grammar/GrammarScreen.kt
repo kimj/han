@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun GrammarScreen(
-    viewModel: GrammarViewModel = hiltViewModel(),
+    viewModel: GrammarViewModel = GrammarViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onAction: (actions: GrammarScreenActions) -> Unit
 ) {
