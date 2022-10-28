@@ -1,40 +1,44 @@
-package com.mentalmachines.han.ui.dictionary
+package com.mentalmachines.han.ui.grammar
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun DictionaryScreen(
-    viewModel: DictionaryViewModel = hiltViewModel(),
+fun GrammarScreen(
+    viewModel: GrammarViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: DictionaryScreenActions) -> Unit
+    onAction: (actions: GrammarScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        GrammarScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun DictionaryScreenContent(
+fun GrammarScreenContent(
     modifier: Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: DictionaryScreenActions) -> Unit
+    onAction: (actions: GrammarScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
-    ) { innerPadding ->
-        DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+    ) {
+        Text("Hi")
     }
 }
 
-sealed class DictionaryScreenActions {
-    object Back : DictionaryScreenActions()
+
+sealed class GrammarScreenActions {
+    object Back : GrammarScreenActions()
 }

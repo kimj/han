@@ -1,42 +1,30 @@
 package com.mentalmachines.han.ui.conjugator
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.R
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.dp
 
 
 @Composable
 fun VerbConjugationScreen(
-    viewModel: VerbConjugationViewModel = verbConjugationViewModel(),
+    viewModel: VerbConjugationViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onAction: (actions: VerbConjugationScreenActions) -> Unit
 ) {
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        VerbConjugationScreenContent()
+        VerbConjugationScreenContent(modifier = Modifier.padding(innerPadding))
     }
 }
 
 
 @Composable
 fun VerbConjugationScreenContent(
+    modifier: Modifier,
 ) {
-//    Scaffold(
-//        scaffoldState = scaffoldState
-//    ) { innerPadding ->
-//        DetailScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
-//    }
+    Text(text = "Verb Conjugation")
 }
 
 sealed class VerbConjugationScreenActions {
@@ -49,7 +37,8 @@ private fun DetailScreenContent(
     modifier: Modifier,
     onAction: (actions: DetailScreenActions) -> Unit
 ) {
-    Column(
+    Text(text = "Verb Conjugation")
+    /*Column(
         modifier = modifier
             .padding(start = 24.dp, end = 24.dp, top = 56.dp)
             .fillMaxHeight()
@@ -108,10 +97,10 @@ private fun DetailScreenContent(
                 Text(text = "Book Now", style = MaterialTheme.typography.buttonText)
             }
         }
-    }
+    }*/
 }
 
-@Composable
+/*@Composable
 private fun MoreImages() {
     Spacer(modifier = Modifier.size(24.dp))
     Column(
@@ -144,7 +133,7 @@ private fun MoreImages() {
             )
         }
     }
-}
+}*/
 
 
 sealed class DetailScreenActions {

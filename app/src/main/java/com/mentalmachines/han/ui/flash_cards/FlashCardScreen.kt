@@ -6,10 +6,11 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun FlashCardScreen(
-    viewModel: FlashCardViewModel = FlashCardViewModel(),
+    viewModel: FlashCardViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onAction: (actions: FlashCardScreenActions) -> Unit
 ) {
@@ -23,6 +24,7 @@ fun FlashCardScreen(
 
 @Composable
 fun FlashCardScreenContent(
+    modifier: Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onAction: (actions: FlashCardScreenActions) -> Unit
 ) {
@@ -33,3 +35,8 @@ fun FlashCardScreenContent(
         FlashCardScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
     }
 }
+
+sealed class FlashCardScreenActions {
+    object Back : FlashCardScreenActions()
+}
+

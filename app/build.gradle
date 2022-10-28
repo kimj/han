@@ -6,11 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    namespace 'com.mentalmachines.han'
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.mentalmachines.han"
-        minSdkVersion 21
-        targetSdkVersion 32
+        minSdkVersion 24
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,48 +22,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'com.mentalmachines.han'
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
 }
 
 dependencies {
-    // final support = "27.0.2"
-    // final playServices = "10.0.1"
-    // final leakCanary = "1.5"
-    final butterKnife = "8.8.1"
-
-    final retrofit2 = "2.3.0"
-    final okHttp = "3.10.0"
-    final rxAndroid = "2.0.1"
-    final rxJava2 = "2.2.9"
-    final rxBinding = "2.0.0"
-    final rxLifecycle = "2.1.0"
-
-    final dagger2 = "2.38.1"
-    // final espresso = "2.2.2"
-    // final testRunner = "0.5"
     final mockito = "1.10.19"
     final junit = "4.13.2"
     final timber = "4.3.1"
-    final moshi = "1.2.0"
     final hilt = "2.42"
-    final glide = "3.7.0"
-    //final multidex = "1.0.1"
-    final compose = '1.2.1'
-    final lifecycle = '1.1.0'
-    final room_version = '2.5.0-alpha02'
-    def nav_version = '2.5.2'
+    final compose = '1.3.0'
+    final room_version = '2.5.0-beta01'
+    def nav_version = '2.5.3'
 
     // KOTLIN
-    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.android.gms:play-services-basement:18.1.0'
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
-    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.1'
+    implementation "com.google.accompanist:accompanist-navigation-animation:0.26.2-beta"
 
-    // AndroidX Compose
+    implementation 'com.android.tools.build:gradle:8.0.0-alpha06'
+
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
+
     implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.ui:ui-tooling:$compose"
     implementation "androidx.compose.foundation:foundation:$compose"
@@ -70,53 +68,17 @@ dependencies {
     implementation "androidx.compose.material:material-icons-core:$compose"
     implementation "androidx.compose.material:material-icons-extended:$compose"
 
-    implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
     implementation "androidx.compose.runtime:runtime-livedata:$compose"
     implementation "androidx.compose.runtime:runtime-rxjava2:$compose"
     implementation "androidx.navigation:navigation-compose:$nav_version"
-    implementation "com.google.accompanist:accompanist-navigation-animation:0.26.2-beta"
-
-    // optional - RxJava3 support for Room
-    implementation "androidx.room:room-rxjava3:$room_version"
-
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:$room_version"
-
-    // optional - Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
-
-    // optional - Paging 3 Integration
-    implementation "androidx.room:room-paging:2.5.0-alpha02"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // TESTING
     testImplementation "junit:junit:$junit"
     testImplementation "org.mockito:mockito-core:$mockito"
-
-    // NETWORKING
-    implementation "com.squareup.retrofit2:retrofit:$retrofit2"
-    implementation "com.squareup.okhttp3:okhttp:$okHttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
-
-    //JSON PARSING
-    implementation "com.squareup.moshi:moshi:$moshi"
-    implementation group: 'com.squareup.retrofit2', name: 'converter-moshi', version: '2.0.0-beta3'
-
-    //Rx
-    implementation "io.reactivex.rxjava2:rxjava:$rxJava2"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
-    implementation "com.jakewharton.rxbinding2:rxbinding:$rxBinding"
-    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxBinding"
-    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rxBinding"
-    implementation "com.jakewharton.rxbinding2:rxbinding-design:$rxBinding"
-    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rxBinding"
-    implementation "com.jakewharton.rxbinding2:rxbinding-leanback-v17:$rxBinding"
-    implementation "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycle"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycle"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycle"
 
     // DEPENDENCY INJECTION
     implementation "com.google.dagger:dagger:$hilt"
@@ -125,18 +87,17 @@ dependencies {
     api "com.google.dagger:dagger-android-support:$hilt"
     kapt "com.google.dagger:dagger-android-processor:$hilt"
     implementation "com.google.dagger:hilt-android:$hilt"
-    implementation "com.google.dagger:hilt-android:$hilt"
     kapt "com.google.dagger:hilt-android-compiler:$hilt"
-
-    // VIEW PROCESSING
-    implementation "com.jakewharton:butterknife:$butterKnife"
-    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "androidx.hilt:hilt-compiler:$hilt"
 
     // MISC
     implementation "com.jakewharton.timber:timber:$timber"
-    implementation "com.facebook.stetho:stetho-okhttp3:1.4.2"
 
     // DATABASE
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
+    implementation "androidx.room:room-guava:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 }

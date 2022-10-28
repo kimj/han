@@ -12,7 +12,9 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.mentalmachines.han.ui.conjugator.DetailScreenActions
 import com.mentalmachines.han.ui.conjugator.VerbConjugationScreen
+import com.mentalmachines.han.ui.dictionary.DictionaryScreen
 import com.mentalmachines.han.ui.flash_cards.FlashCardScreen
+import com.mentalmachines.han.ui.grammar.GrammarScreen
 
 
 sealed class Screen(val name: String, val route: String) {
