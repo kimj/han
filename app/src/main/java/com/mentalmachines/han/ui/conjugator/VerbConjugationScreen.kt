@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 fun VerbConjugationScreen(
     viewModel: VerbConjugationViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: VerbConjugationScreenActions) -> Unit
+    // onAction: (actions: VerbConjugationScreenActions) -> Unit
 ) {
     Scaffold(
         scaffoldState = scaffoldState

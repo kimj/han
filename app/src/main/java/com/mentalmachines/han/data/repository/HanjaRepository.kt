@@ -20,3 +20,8 @@ class HanjaRepository @Inject constructor(
 
     fun getHanja() = HanjaDao.getHanja()
 }
+
+@Singleton
+class HanjaRepositoryImpl @Inject constructor(
+    private val HanjaDao: HanjaDao
+)

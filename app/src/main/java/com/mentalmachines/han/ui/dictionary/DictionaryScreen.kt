@@ -11,13 +11,14 @@ import androidx.compose.ui.Modifier
 fun DictionaryScreen(
     viewModel: DictionaryViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: DictionaryScreenActions) -> Unit
+    // onAction: (actions: DictionaryScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        DictionaryScreenContent(modifier = Modifier.padding(innerPadding))
+        // DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
     }
 }
 
@@ -25,13 +26,14 @@ fun DictionaryScreen(
 fun DictionaryScreenContent(
     modifier: Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: DictionaryScreenActions) -> Unit
+    // onAction: (actions: DictionaryScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        // DictionaryScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        DictionaryScreenContent(modifier = Modifier.padding(innerPadding))
     }
 }
 

@@ -12,13 +12,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 fun FlashCardScreen(
     viewModel: FlashCardViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: FlashCardScreenActions) -> Unit
+    // onAction: (actions: FlashCardScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        FlashCardScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        FlashCardScreenContent(modifier = Modifier.padding(innerPadding))
+        // FlashCardScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
     }
 }
 
@@ -26,7 +27,7 @@ fun FlashCardScreen(
 fun FlashCardScreenContent(
     modifier: Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: FlashCardScreenActions) -> Unit
+    // onAction: (actions: FlashCardScreenActions) -> Unit
 ) {
 
     Scaffold(

@@ -13,13 +13,14 @@ import androidx.compose.ui.Modifier
 fun GrammarScreen(
     viewModel: GrammarViewModel = GrammarViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: GrammarScreenActions) -> Unit
+    // onAction: (actions: GrammarScreenActions) -> Unit
 ) {
 
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        GrammarScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        // GrammarScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        GrammarScreenContent(modifier = Modifier.padding(innerPadding))
     }
 }
 
@@ -28,7 +29,7 @@ fun GrammarScreen(
 fun GrammarScreenContent(
     modifier: Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onAction: (actions: GrammarScreenActions) -> Unit
+    // onAction: (actions: GrammarScreenActions) -> Unit
 ) {
 
     Scaffold(

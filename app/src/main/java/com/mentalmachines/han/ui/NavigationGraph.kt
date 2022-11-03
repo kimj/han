@@ -1,6 +1,5 @@
 package com.mentalmachines.han.ui
 
-import android.window.SplashScreen
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -15,10 +14,11 @@ import com.mentalmachines.han.ui.conjugator.VerbConjugationScreen
 import com.mentalmachines.han.ui.dictionary.DictionaryScreen
 import com.mentalmachines.han.ui.flash_cards.FlashCardScreen
 import com.mentalmachines.han.ui.grammar.GrammarScreen
+import com.mentalmachines.han.ui.home.HomeScreen
+import com.mentalmachines.han.ui.home.HomeScreenActions
 
 
 sealed class Screen(val name: String, val route: String) {
-    object Splash : Screen("splash", "splash")
     object Home : Screen("home", "home")
     object VerbConjugator : Screen("verbconjugator", "verbconjugator")
     object Grammar : Screen("grammar", "grammar")
@@ -37,51 +37,53 @@ fun HanNavigationGraph(
 ) {
     AnimatedNavHost(
         navController = navController,
-        startDestination = Screen.Splash.route,
+        startDestination = Screen.Home.route,
         modifier = modifier
     ) {
-        composable(Screen.Splash.route) {
-            SplashScreen(onAction = actions::navigateToHome)
-        }
 
         composable(Screen.Home.route) {
-            HomeScreen(onAction = actions::navigateFromHome, navController = navController)
+            HomeScreen(onAction = actions::navigateFromHome)
         }
 
         composable(Screen.Grammar.route) {
-            GrammarScreen(onAction = actions::navigateFromDetails)
+            GrammarScreen()
         }
 
         composable(Screen.Dictionary.route) {
-            DictionaryScreen(onAction = actions::navigateFromDetails)
+            DictionaryScreen()
         }
 
         composable(Screen.VerbConjugator.route) {
-            VerbConjugationScreen(onAction = actions::navigateFromDetails)
+            VerbConjugationScreen()
         }
 
         composable(Screen.FlashCard.route) {
-            FlashCardScreen(onAction = actions::navigateFromDetails)
+            FlashCardScreen()
         }
     }
 }
 
 class NavActions(private val navController: NavController) {
-    fun navigateToHome(_A: SplashScreenActions) {
-        navController.navigate(Screen.Home.name) {
-            popUpTo(Screen.Splash.route) {
-                inclusive = true
+    fun navigateFromHome(actions: HomeScreenActions) {
+        when (actions) {
+            HomeScreenActions.Back -> {
+                navController.navigate(Screen.Home.name)
+            }
+            else -> {}
+        }
+    }
+
+    fun navigateToDictionary(actions: HomeScreenActions) {
+        when (actions) {
+            HomeScreenActions.Dictionary -> {
+                navController.navigate(Screen.Dictionary.name)
+            }
+            HomeScreenActions.Back -> {
+                navController.navigate(Screen.Home.name)
             }
         }
     }
 
-    fun navigateFromHome(actions: HomeScreenActions) {
-        when (actions) {
-            HomeScreenActions.Details -> {
-                navController.navigate(Screen.Detail.name)
-            }
-        }
-    }
 
     fun navigateFromDetails(actions: DetailScreenActions) {
         when (actions) {

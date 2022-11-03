@@ -4,3 +4,8 @@ class GrammarRepository {
     var grammar: List<String>? = null
 
 }
+
+class GrammarRepositoryImpl {
+    var grammar: List<String>? = null
+
+}
