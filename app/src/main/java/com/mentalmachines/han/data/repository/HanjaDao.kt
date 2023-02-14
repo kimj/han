@@ -1,8 +1,6 @@
 package com.mentalmachines.han.data.repository
 
 import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
@@ -11,16 +9,15 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface HanjaDao {
-    @Query("SELECT * FROM garden_plantings")
-    fun getGardenPlantings(): Flow<List<HanjaDao>>
+    @Query("SELECT * FROM hanja")
+    fun getHanja(): Flow<List<HanjaDao>>
 
-    @Query("SELECT * FROM plants WHERE id IN (SELECT DISTINCT(plant_id) FROM garden_plantings)")
-    fun getHanja(): Flow<List<Hanja>>
+    @Query("SELECT * FROM hanja WHERE id IN (SELECT DISTINCT(plant_id) FROM garden_plantings)")
+    fun getHanjaList(): Flow<List<Hanja>>
 
-    @Insert
+    /*@Insert
     suspend fun insertHanja(hanja: Hanja): Long
 
     @Delete
-    fun deleteHanja(hanja: Hanja)
-
+    fun deleteHanja(hanja: Hanja)*/
 }
