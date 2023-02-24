@@ -33,7 +33,7 @@ fun FlashCardScreenContent(
     Scaffold(
         scaffoldState = scaffoldState
     ) { innerPadding ->
-        FlashCardScreenContent(modifier = Modifier.padding(innerPadding), onAction = onAction)
+        FlashCardScreenContent(modifier = Modifier.padding(innerPadding))
     }
 }
 

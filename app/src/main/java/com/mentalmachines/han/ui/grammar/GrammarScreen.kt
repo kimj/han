@@ -8,10 +8,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun GrammarScreen(
-    viewModel: GrammarViewModel = GrammarViewModel(),
+    viewModel: GrammarViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     // onAction: (actions: GrammarScreenActions) -> Unit
 ) {
