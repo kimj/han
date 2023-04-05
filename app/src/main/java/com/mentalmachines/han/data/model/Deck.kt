@@ -1,7 +1,12 @@
 package com.mentalmachines.han.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 class Deck {
     // deck_id is a unique identifier
+    @PrimaryKey
     var deck_id = 0
 
     // ---------------------------------------------------
@@ -43,4 +48,18 @@ class Deck {
     fun delete_flashcard(new_flashcard: Flashcard?) {
         flashcards.add(new_flashcard)
     }
+
+    fun List<DatabaseVideo>.asDomainModel(): List<DevByteVideo> {
+        return map {
+            DevByteVideo(
+                url = it.url,
+                title = it.title,
+                description = it.description,
+                updated = it.updated,
+                thumbnail = it.thumbnail
+            )
+        }
+    }
+
 }
+

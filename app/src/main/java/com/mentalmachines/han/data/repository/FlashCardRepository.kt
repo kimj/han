@@ -1,11 +1,23 @@
 package com.mentalmachines.han.data.repository
 
-class FlashCardRepository {
-    var grammar: List<String>? = null
+import com.mentalmachines.han.data.model.Deck
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-}
 
-class FlashCardRepositoryImpl {
-    var grammar: List<String>? = null
+class FlashCardRepository(private val database: FlashCardDatabase) {
+    var grammar: List<Deck>? = null
+
+    /*val videos: LiveData<List<DevByteVideo>> = Transformations.map(database.videoDao.getVideos()) {
+        it.asDomainModel()
+    }*/
+
+    suspend fun refreshFlashCardList() {
+        withContext(Dispatchers.IO) {
+            val playlist = DevByteNetwork.devbytes.getPlaylist()
+            database.flashCardDao().insertAll(playlist.asDatabaseModel())
+        }
+    }
+
 
 }

@@ -5,13 +5,6 @@ import androidx.room.RoomDatabase
 
 
 @Database(entities = [Hanja::class], version = 1)
-abstract class HanjaDatabase : RoomDatabase() {
-    abstract fun hanjaDao(): HanjaDao
+abstract class FlashCardDatabase : RoomDatabase() {
     abstract fun flashCardDao(): FlashCardDao
-
-    abstract fun grammarDao(): GrammarDao
-
-    abstract fun dictionaryDao(): DictionaryDao
-
-
 }
