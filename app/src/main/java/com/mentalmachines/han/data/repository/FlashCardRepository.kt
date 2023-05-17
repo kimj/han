@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 
 
 class FlashCardRepository(private val database: FlashCardDatabase) {
-    var grammar: List<Deck>? = null
+    var flashCards: List<Deck>? = null
 
     /*val videos: LiveData<List<DevByteVideo>> = Transformations.map(database.videoDao.getVideos()) {
         it.asDomainModel()
@@ -14,8 +14,8 @@ class FlashCardRepository(private val database: FlashCardDatabase) {
 
     suspend fun refreshFlashCardList() {
         withContext(Dispatchers.IO) {
-            val playlist = DevByteNetwork.devbytes.getPlaylist()
-            database.flashCardDao().insertAll(playlist.asDatabaseModel())
+            /*val flashCards = DevByteNetwork.devbytes.getPlaylist()
+            database.flashCardDao().insertAll(playlist.asDatabaseModel())*/
         }
     }
 
