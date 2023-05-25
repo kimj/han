@@ -9,15 +9,7 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface GrammarDao {
-    @Query("SELECT * FROM hanja")
+    @Query("SELECT * FROM grammar")
     fun getHanja(): Flow<List<GrammarDao>>
 
-    @Query("SELECT * FROM hanja WHERE id IN (SELECT DISTINCT(plant_id) FROM garden_plantings)")
-    fun getHanjaList(): Flow<List<Hanja>>
-
-    /*@Insert
-    suspend fun insertHanja(hanja: Hanja): Long
-
-    @Delete
-    fun deleteHanja(hanja: Hanja)*/
 }
