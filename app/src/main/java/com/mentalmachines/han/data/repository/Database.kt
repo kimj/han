@@ -81,7 +81,7 @@ private fun copyDataBaseFromAssets(context: Context) {
 
     var myInput: InputStream? = null
     var myOutput: OutputStream? = null
-    try {
+    try {git o
 
         val folder = context.getDatabasePath("databases")
 
