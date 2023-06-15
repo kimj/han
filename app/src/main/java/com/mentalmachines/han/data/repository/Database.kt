@@ -10,6 +10,7 @@ import com.mentalmachines.han.data.model.Grammar
 import com.mentalmachines.han.data.model.Hanja
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -59,6 +60,11 @@ abstract class HanDatabase : RoomDatabase() {
 }
 
 class Converters {
+    val type: Type = Types.newParameterizedType(
+        ArrayList::class.java,
+        String::class.java
+    )
+
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }
@@ -70,19 +76,21 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromString(value: String?): ArrayList<String?>? {
+    fun fromString(value: String): ArrayList<String>? {
+        val json = "[{\"name\":\"sibin\", " +
+                "\"email\":\"sibin@gmail.in\"}," +
+                " {\"name\":\"tom\", " +
+                "\"email\":\"tom@gmail.in\"}]"
         val moshi: Moshi = Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<ArrayList<String>> = moshi.adapter<ArrayList<String>>()
 
-
-        val listType: Type = object : TypeToken<ArrayList<String?>?>() {}.getType()
+        val jsonAdapter: JsonAdapter<ArrayList<String>> = moshi.adapter(type)
         return jsonAdapter.fromJson(json)
     }
 
     @TypeConverter
     fun fromArrayList(list: ArrayList<String?>?): String? {
         val moshi: Moshi = Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<ArrayList<String?>> = moshi.adapter<ArrayList<String?>>()
+        val jsonAdapter: JsonAdapter<ArrayList<String?>> = moshi.adapter(type)
 
         return jsonAdapter.toJson(list)
     }

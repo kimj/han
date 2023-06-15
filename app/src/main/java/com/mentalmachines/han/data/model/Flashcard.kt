@@ -1,6 +1,5 @@
 package com.mentalmachines.han.data.model
 
-import android.R.string
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,12 +7,10 @@ import androidx.room.PrimaryKey
 class Flashcard {
     @PrimaryKey
     var flashcard_id: Int = 0
-
-    var fields = arrayOfNulls<string>(2)
+    // var fields = ArrayList<String>()
 
     constructor()
-    constructor(flashcard_id: Int, fields: Array<string?>) {
+    constructor(flashcard_id: Int) {
         this.flashcard_id = 0
-        this.fields = fields
     }
 }
