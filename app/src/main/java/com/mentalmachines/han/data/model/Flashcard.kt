@@ -1,9 +1,14 @@
 package com.mentalmachines.han.data.model
 
 import android.R.string
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity
 class Flashcard {
-    var flashcard_id = 0
+    @PrimaryKey
+    var flashcard_id: Int = 0
+
     var fields = arrayOfNulls<string>(2)
 
     constructor()

@@ -2,24 +2,14 @@ package com.mentalmachines.han.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.util.Calendar
+
 @Entity(
     tableName = "grammar",
-    foreignKeys = [
-        ForeignKey(entity = Grammar::class, parentColumns = ["id"], childColumns = ["plant_id"])
-    ],
-    indices = [Index("plant_id")]
+    indices = [Index("grammar_id")]
 )
 data class Grammar(
-    @ColumnInfo(name = "plant_id") val plantId: String,
-    @ColumnInfo(name = "plant_date") val plantDate: Calendar = Calendar.getInstance(),
-    @ColumnInfo(name = "last_watering_date")
-    val lastWateringDate: Calendar = Calendar.getInstance()
-) {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var gardenPlantingId: Long = 0
-}
+    @PrimaryKey @ColumnInfo(name = "grammar_id") val grammarId: String,
+    @ColumnInfo(name = "grammar_description") val grammarDescription: String,
+)

@@ -7,18 +7,23 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.mentalmachines.han.data.model.Grammar
+import com.mentalmachines.han.data.model.Hanja
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.lang.reflect.Type
 import java.util.Date
+
 
 /**
  * The Room database for this app
  */
 @Database(entities = [Hanja::class, Grammar::class], version = 1, exportSchema = false)
-@TypeConverters({ Converters.class })
+@TypeConverters(Converters::class)
 abstract class HanDatabase : RoomDatabase() {
     abstract fun hanjaDao(): HanjaDao
     abstract fun dictionaryDao(): DictionaryDao
@@ -43,21 +48,13 @@ abstract class HanDatabase : RoomDatabase() {
             val DATABASE_NAME = "sunflower-db"
             val KEY_FILENAME = "plants.json"
 
-
-
-            Room.databaseBuilder(context.applicationContext, HanDatabase.class,"x.db")
-                .openHelperFactory(new AssetSQLiteOpenHelperFactory ())
-                .allowMainThreadQueries()
-                .build()
-
             return Room.databaseBuilder(
                 context,
-
-                HanDatabase::class.java, "database-name"
-            ).build()
+                HanDatabase::class.java, DATABASE_NAME
+            )
+                .allowMainThreadQueries()
+                .build()
         }
-
-        SQlLite
     }
 }
 
@@ -71,6 +68,24 @@ class Converters {
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time?.toLong()
     }
+
+    @TypeConverter
+    fun fromString(value: String?): ArrayList<String?>? {
+        val moshi: Moshi = Moshi.Builder().build()
+        val jsonAdapter: JsonAdapter<ArrayList<String>> = moshi.adapter<ArrayList<String>>()
+
+
+        val listType: Type = object : TypeToken<ArrayList<String?>?>() {}.getType()
+        return jsonAdapter.fromJson(json)
+    }
+
+    @TypeConverter
+    fun fromArrayList(list: ArrayList<String?>?): String? {
+        val moshi: Moshi = Moshi.Builder().build()
+        val jsonAdapter: JsonAdapter<ArrayList<String?>> = moshi.adapter<ArrayList<String?>>()
+
+        return jsonAdapter.toJson(list)
+    }
 }
 
 
@@ -81,7 +96,7 @@ private fun copyDataBaseFromAssets(context: Context) {
 
     var myInput: InputStream? = null
     var myOutput: OutputStream? = null
-    try {git o
+    try {
 
         val folder = context.getDatabasePath("databases")
 

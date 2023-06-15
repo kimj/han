@@ -2,6 +2,7 @@ package com.mentalmachines.han.data.repository
 
 import androidx.room.Dao
 import androidx.room.Query
+import com.mentalmachines.han.data.model.Grammar
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GrammarDao {
     @Query("SELECT * FROM grammar")
-    fun getHanja(): Flow<List<GrammarDao>>
+    fun getHanja(): Flow<List<Grammar>>
 
 }

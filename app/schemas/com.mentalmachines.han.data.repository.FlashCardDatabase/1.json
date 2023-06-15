@@ -1,0 +1,40 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "bdec70830f69fa05ee02c0f10d7e4617",
+    "entities": [
+      {
+        "tableName": "Flashcard",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`flashcard_id` INTEGER NOT NULL, `fields` TEXT NOT NULL, PRIMARY KEY(`flashcard_id`))",
+        "fields": [
+          {
+            "fieldPath": "flashcard_id",
+            "columnName": "flashcard_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fields",
+            "columnName": "fields",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "flashcard_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bdec70830f69fa05ee02c0f10d7e4617')"
+    ]
+  }
+}

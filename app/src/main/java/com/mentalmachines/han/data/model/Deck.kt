@@ -49,7 +49,7 @@ class Deck {
         flashcards.add(new_flashcard)
     }
 
-    fun List<DatabaseVideo>.asDomainModel(): List<DevByteVideo> {
+    /*fun List<DatabaseVideo>.asDomainModel(): List<DevByteVideo> {
         return map {
             DevByteVideo(
                 url = it.url,
@@ -59,7 +59,7 @@ class Deck {
                 thumbnail = it.thumbnail
             )
         }
-    }
+    }*/
 
 }
 

@@ -1,0 +1,34 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c793795ff889abf057a695515ee8c240",
+    "entities": [
+      {
+        "tableName": "Dictionary",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entry_id` INTEGER NOT NULL, PRIMARY KEY(`entry_id`))",
+        "fields": [
+          {
+            "fieldPath": "entry_id",
+            "columnName": "entry_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entry_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c793795ff889abf057a695515ee8c240')"
+    ]
+  }
+}

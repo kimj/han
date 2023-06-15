@@ -1,0 +1,50 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b1c8fc658a98388b42afce1e74e79320",
+    "entities": [
+      {
+        "tableName": "grammar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`grammar_id` TEXT NOT NULL, `grammar_description` TEXT NOT NULL, PRIMARY KEY(`grammar_id`))",
+        "fields": [
+          {
+            "fieldPath": "grammarId",
+            "columnName": "grammar_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "grammarDescription",
+            "columnName": "grammar_description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "grammar_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_grammar_grammar_id",
+            "unique": false,
+            "columnNames": [
+              "grammar_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_grammar_grammar_id` ON `${TABLE_NAME}` (`grammar_id`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b1c8fc658a98388b42afce1e74e79320')"
+    ]
+  }
+}

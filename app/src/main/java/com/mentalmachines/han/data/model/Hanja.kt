@@ -8,9 +8,10 @@ import androidx.room.PrimaryKey
 import java.sql.Blob
 import java.util.Calendar
 
+@Entity
+data class Hanja(@PrimaryKey val id: Int) {
 
-data class Hanja {
-    val char: String
+    val char: String = ""
 
 }
 
