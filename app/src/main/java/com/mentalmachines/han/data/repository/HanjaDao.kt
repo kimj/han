@@ -6,4 +6,8 @@ import androidx.room.Dao
  * The Data Access Object for the [HanjaDao] class.
  */
 @Dao
-interface HanjaDao
+interface HanjaDao {
+
+    /*    @Query("SELECT * FROM hanja")
+        fun getHanja(): List<Hanja>*/
+}

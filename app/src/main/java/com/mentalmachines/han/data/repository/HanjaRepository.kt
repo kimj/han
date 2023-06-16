@@ -9,5 +9,5 @@ class HanjaRepository @Inject constructor(
     private val HanjaDao: HanjaDao
 ) {
 
-    fun getHanja() = HanjaDao.getHanja()
+    // fun getHanja() = HanjaDao.getHanja()
 }
