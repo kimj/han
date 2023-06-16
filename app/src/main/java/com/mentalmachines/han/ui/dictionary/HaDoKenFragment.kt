@@ -14,7 +14,6 @@ import com.google.android.gms.common.api.ApiException
 import com.mentalmachines.han.R
 
 class HaDoKenFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

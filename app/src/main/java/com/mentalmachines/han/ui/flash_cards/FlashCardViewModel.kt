@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.*
 import com.mentalmachines.han.data.model.Flashcard
-import com.mentalmachines.han.data.repository.FlashCardRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -24,7 +23,7 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class FlashCardViewModel @Inject constructor(flashCardRepository: FlashCardRepository) :
+class FlashCardViewModel @Inject constructor(flashCardRepository: Application) :
     ViewModel() {
     /**
      * The data source this ViewModel will fetch results from.
@@ -34,7 +33,7 @@ class FlashCardViewModel @Inject constructor(flashCardRepository: FlashCardRepos
     /**
      * A playlist of videos displayed on the screen.
      */
-    val playlist = flashCardRepository.videos
+    val playlist = flashCardRepository.flashCards
 
     /**
      * A playlist of videos that can be shown on the screen. This is private to avoid exposing a
@@ -82,13 +81,13 @@ class FlashCardViewModel @Inject constructor(flashCardRepository: FlashCardRepos
     private fun refreshDataFromRepository() {
         viewModelScope.launch {
             try {
-                flashCardRepository.refreshCardLists()
+                flashCardRepository.refreshFlashCardList()
                 _eventNetworkError.value = false
                 _isNetworkErrorShown.value = false
 
             } catch (networkError: IOException) {
                 // Show a Toast error message and hide the progress bar.
-                if (playlist.value.isNullOrEmpty())
+                if (playlist.isNullOrEmpty())
                     _eventNetworkError.value = true
             }
         }

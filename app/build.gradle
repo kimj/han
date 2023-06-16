@@ -56,6 +56,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-basement:18.0.1'
     final compose = '1.4.3'
     final room = '2.5.1'
     def nav_version = '2.6.0'
