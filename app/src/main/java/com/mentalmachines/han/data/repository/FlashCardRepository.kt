@@ -1,22 +1,21 @@
 package com.mentalmachines.han.data.repository
 
 import com.mentalmachines.han.data.model.Deck
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class FlashCardRepository(private val database: FlashCardDatabase) {
+@Singleton
+class FlashCardRepository @Inject constructor(
+    private val flashCardDao: FlashCardDao
+) {
     var flashCards: List<Deck>? = null
 
     /*val videos: LiveData<List<DevByteVideo>> = Transformations.map(database.videoDao.getVideos()) {
         it.asDomainModel()
     }*/
 
-    suspend fun refreshFlashCardList() {
-        withContext(Dispatchers.IO) {
-            /*val flashCards = DevByteNetwork.devbytes.getPlaylist()
-            database.flashCardDao().insertAll(playlist.asDatabaseModel())*/
-        }
+    fun refreshFlashCardList() {
+
     }
 
 

@@ -1,5 +1,11 @@
 package com.mentalmachines.han.data.repository
 
-class DictionaryRepository(private val database: DictionaryDatabase) {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class DictionaryRepository @Inject constructor(
+    private val DictionaryDao: DictionaryDao
+) {
     var dictionary: List<String>? = null
 }

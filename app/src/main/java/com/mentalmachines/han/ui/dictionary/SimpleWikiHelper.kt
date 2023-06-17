@@ -15,19 +15,8 @@
  */
 package com.mentalmachines.han.ui.dictionary
 
+//import org.apache.http.HttpEntity
 import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.util.Log
-import com.mentalmachines.han.R
-import org.apache.http.HttpEntity
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
 
 /**
  * Helper methods to simplify talking with and parsing responses from a
@@ -36,47 +25,53 @@ import java.io.InputStream
  * your application package name and version.
  */
 object SimpleWikiHelper {
-    private const val TAG = "SimpleWikiHelper"
+    /*private const val TAG = "SimpleWikiHelper"
 
+    */
     /**
      * Partial URL to use when requesting the detailed entry for a specific
      * Wiktionary page. Use [String.format] to insert
      * the desired page title after escaping it as needed.
-     */
+     *//*
     private const val WIKTIONARY_PAGE =
     //            "http://en.wiktionary.org/w/api.php?action=query&prop=revisions&titles=%s&" +
         //            "rvprop=content&format=json%s";
         "http://en.wiktionary.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles="
 
+    */
     /**
      * Partial URL to append to [.WIKTIONARY_PAGE] when you want to expand
      * any templates found on the requested page. This is useful when browsing
      * full entries, but may use more network bandwidth.
-     */
+     *//*
     private const val WIKTIONARY_EXPAND_TEMPLATES = "&rvexpandtemplates=true"
 
+    */
     /**
      * [StatusLine] HTTP status code when no server error has occurred.
-     */
+     *//*
     private const val HTTP_STATUS_OK = 200
 
+    */
     /**
      * Shared buffer used by [.getUrlContent] when reading results
      * from an API request.
-     */
+     *//*
     private val sBuffer = ByteArray(512)
 
+    */
     /**
      * User-agent string to use when making requests. Should be filled using
      * [.prepareUserAgent] before making any other calls.
-     */
+     *//*
     private var sUserAgent: String? = null
 
+    */
     /**
      * Prepare the internal User-Agent string for use. This requires a
      * [Context] to pull the package name and version number for this
      * application.
-     */
+     *//*
     fun prepareUserAgent(context: Context) {
         try {
             // Read package name and version number from manifest
@@ -91,6 +86,7 @@ object SimpleWikiHelper {
         }
     }
 
+    */
     /**
      * Read and return the content for a specific Wiktionary page. This makes a
      * lightweight API call, and trims out just the page content returned.
@@ -102,7 +98,7 @@ object SimpleWikiHelper {
      * @return Exact content of page.
      * @throws ApiException If any connection or server error occurs.
      * @throws ParseException If there are problems parsing the response.
-     */
+     *//*
     @Throws(ApiException::class, ParseException::class)
     fun getPageContent(title: String, expandTemplates: Boolean): String {
         // Encode page title and expand templates if requested
@@ -130,6 +126,7 @@ object SimpleWikiHelper {
         }
     }
 
+    */
     /**
      * Pull the raw text content of the given URL. This call blocks until the
      * operation has completed, and is synchronized because it uses a shared
@@ -138,7 +135,7 @@ object SimpleWikiHelper {
      * @param url The exact URL to request.
      * @return The raw content returned by the server.
      * @throws ApiException If any connection or server error occurs.
-     */
+     *//*
     @Synchronized
     @Throws(ApiException::class)
     internal fun getUrlContent(url: String?): String {
@@ -180,10 +177,11 @@ object SimpleWikiHelper {
         }
     }
 
+    */
     /**
      * Thrown when there were problems contacting the remote API server, either
      * because of a network error, or the server returned a bad status code.
-     */
+     *//*
     class ApiException : Exception {
         constructor(detailMessage: String?, throwable: Throwable?) : super(
             detailMessage,
@@ -193,10 +191,11 @@ object SimpleWikiHelper {
         constructor(detailMessage: String?) : super(detailMessage)
     }
 
+    */
     /**
      * Thrown when there were problems parsing the response to an API call,
      * either because the response was empty, or it was malformed.
-     */
+     *//*
     class ParseException(detailMessage: String?, throwable: Throwable?) :
-        Exception(detailMessage, throwable)
+        Exception(detailMessage, throwable)*/
 }

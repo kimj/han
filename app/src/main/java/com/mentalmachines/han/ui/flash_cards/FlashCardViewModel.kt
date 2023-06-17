@@ -1,11 +1,8 @@
 package com.mentalmachines.han.ui.flash_cards
 
-import android.app.Application
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.*
 import com.mentalmachines.han.data.model.Flashcard
+import com.mentalmachines.han.data.repository.FlashCardRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -23,17 +20,12 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class FlashCardViewModel @Inject constructor(flashCardRepository: Application) :
+class FlashCardViewModel @Inject constructor(flashCardRepository: FlashCardRepository) :
     ViewModel() {
     /**
      * The data source this ViewModel will fetch results from.
      */
     private val flashCardRepository = flashCardRepository
-
-    /**
-     * A playlist of videos displayed on the screen.
-     */
-    val playlist = flashCardRepository.flashCards
 
     /**
      * A playlist of videos that can be shown on the screen. This is private to avoid exposing a
@@ -87,7 +79,7 @@ class FlashCardViewModel @Inject constructor(flashCardRepository: Application) :
 
             } catch (networkError: IOException) {
                 // Show a Toast error message and hide the progress bar.
-                if (playlist.isNullOrEmpty())
+                if (_playlist != null)
                     _eventNetworkError.value = true
             }
         }
@@ -100,22 +92,6 @@ class FlashCardViewModel @Inject constructor(flashCardRepository: Application) :
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
-
-    /**
-     * Factory for constructing DevByteViewModel with parameter
-     */
-    class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(FlashCardViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return FlashCardViewModel(app) as T
-            }
-            throw IllegalArgumentException("Unable to construct viewmodel")
-        }
-    }
-
-    var uiState by mutableStateOf(FlashCardUiState())
-        private set
 }
 
 data class FlashCardUiState(

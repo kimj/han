@@ -1,33 +1,10 @@
 package com.mentalmachines.han.ui.dictionary
 
-import android.net.ParseException
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.gms.common.api.ApiException
-import com.mentalmachines.han.R
 
 class HaDoKenFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // String sResult = new String();
-        val searchButton = findViewById(R.id.search) as Button
-        searchButton.setOnClickListener {
-            // grab @+id/searchString and send this to the xml request handler
-            val searchText: EditText = findViewById(R.id.searchText) as EditText
-            val resultsText: TextView = findViewById(R.id.resultsText) as TextView
-            var pageContent: String? = null
 
-            // get a ParsedPage object
+    /*    fun getWikiEMediaPage() {
             val pf = MediaWikiParserFactory()
             val parser: MediaWikiParser = pf.createParser()
             val pp: ParsedPage = parser.parse(pageContent)
@@ -53,10 +30,7 @@ class HaDoKenFragment : Fragment() {
             } catch (e: ParseException) {
                 Log.e("WordWidget", "Couldn't parse API response", e)
             }
-            resultsText.text = pageContent
-        }
-
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+            return resultsText.text = pageContent
+        }*/
 
 }
