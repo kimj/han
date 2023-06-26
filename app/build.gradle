@@ -34,12 +34,12 @@ android {
 
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = '18'
     }
     buildFeatures {
         compose true
@@ -56,7 +56,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-basement:18.0.1'
+
     final compose = '1.4.3'
     final room = '2.5.1'
     def nav_version = '2.6.0'
@@ -75,7 +75,7 @@ dependencies {
 
     def moshi = "1.14.0"
 
-
+    // JSON parser
     implementation("com.squareup.moshi:moshi:$moshi")
 
     // KOTLIN
@@ -135,6 +135,10 @@ dependencies {
     // Jetpack Compose Integration
     implementation "com.google.accompanist:accompanist-navigation-animation:0.21.1-beta"
     // implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    // Google Play Services
+    implementation 'com.google.android.gms:play-services-basement:18.2.0'
+
 }
 
 kapt {
