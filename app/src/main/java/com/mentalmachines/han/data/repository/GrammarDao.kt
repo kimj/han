@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GrammarDao {
     @Query("SELECT * FROM grammar")
-    fun getHanja(): Flow<List<Grammar>>
+    fun getGrammar(): Flow<List<Grammar>>
 
 }
