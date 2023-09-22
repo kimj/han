@@ -11,6 +11,7 @@ import com.mentalmachines.han.data.model.Hanja
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException

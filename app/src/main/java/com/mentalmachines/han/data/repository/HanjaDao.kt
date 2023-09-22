@@ -9,6 +9,6 @@ import com.mentalmachines.han.data.model.Hanja
  */
 @Dao
 interface HanjaDao {
-        @Query("SELECT * FROM hanja")
+        @Query("SELECT * FROM hanjas_content")
         fun getHanja(): List<Hanja>
 }
