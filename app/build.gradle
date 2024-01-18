@@ -61,12 +61,11 @@ android {
 dependencies {
     final compose = '1.5.4'
     final room = '2.6.1'
-    def nav_version = '2.7.5'
+    def nav_version = '2.7.6'
     def hilt = "2.44"
-    def lifecycle_version = "2.6.2"
+    def lifecycle_version = "2.7.0"
     def hilt_navigation_compose = "1.1.0"
-    def activity_compose = "1.8.1"
-    def lifecycle_viewmodel_compose = "2.6.2"
+    def activity_compose = "1.8.2"
 
     def androidXTestVersion0 = "1.5.0"
     def testRunnerVersion = "1.5.2"
@@ -91,7 +90,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-core:$compose"
     implementation "androidx.compose.material:material-icons-extended:$compose"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_viewmodel_compose"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.activity:activity-compose:$activity_compose"
 
     // TESTING
