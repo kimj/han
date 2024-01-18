@@ -1,19 +1,20 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.devtools.ksp'
 }
 
 android {
-    compileSdkVersion 33
-
     namespace 'com.mentalmachines.han'
+    defaultConfig {
+        compileSdk 34
+    }
 
     defaultConfig {
         applicationId "com.mentalmachines.han"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -33,37 +34,39 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_19
-        targetCompatibility JavaVersion.VERSION_19
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = '19'
+    kotlin {
+        jvmToolchain(17)
     }
+
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.6"
+    }
+    kotlinOptions {
+        jvmTarget = "19"
     }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    buildToolsVersion '30.0.3'
 }
 
 dependencies {
-
-    final compose = '1.4.3'
-    final room = '2.5.1'
-    def nav_version = '2.6.0'
+    final compose = '1.5.4'
+    final room = '2.6.1'
+    def nav_version = '2.7.5'
     def hilt = "2.44"
-    def lifecycle_version = "2.2.0"
-    def hilt_navigation_compose = "1.0.0"
-    def activity_compose = "1.7.2"
-    def lifecycle_viewmodel_compose = "2.6.1"
+    def lifecycle_version = "2.6.2"
+    def hilt_navigation_compose = "1.1.0"
+    def activity_compose = "1.8.1"
+    def lifecycle_viewmodel_compose = "2.6.2"
 
     def androidXTestVersion0 = "1.5.0"
     def testRunnerVersion = "1.5.2"
@@ -79,7 +82,7 @@ dependencies {
 
     // KOTLIN
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
 
     implementation "androidx.compose.ui:ui:$compose"
     implementation "androidx.compose.ui:ui-tooling:$compose"
@@ -110,19 +113,19 @@ dependencies {
 
     // DEPENDENCY INJECTION
     implementation("com.google.dagger:hilt-android:$hilt")
-    kapt("com.google.dagger:hilt-android-compiler:$hilt")
+    ksp("com.google.dagger:hilt-android-compiler:$hilt")
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
 
     // DATABASE
     implementation "androidx.room:room-runtime:$room"
     annotationProcessor "androidx.room:room-compiler:$room"
-    kapt "androidx.room:room-compiler:$room"
-    implementation "androidx.room:room-ktx:2.5.1"
+    ksp 'androidx.room:room-compiler:2.6.1'
+    implementation "androidx.room:room-ktx:2.6.1"
 
 
     // NAVIGATION
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -136,10 +139,5 @@ dependencies {
     // implementation "androidx.navigation:navigation-compose:$nav_version"
 
     // Google Play Services
-    implementation 'com.google.android.gms:play-services-basement:18.2.0'
-
-}
-
-kapt {
-    correctErrorTypes = true
+    implementation 'com.google.android.gms:play-services-basement:18.3.0'
 }
